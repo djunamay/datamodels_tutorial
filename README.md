@@ -11,6 +11,7 @@ Understanding how training data influences model predictions ("data attribution"
 
 ## This Repository
 This repository contains code to reproduce the example experiment given in the tutorial (i.e. `datamodels.pt`).
+For the purpose of this tutorial, this repository adapts code by the Madry lab ([here](https://github.com/MadryLab/datamodels)) and relies on theory presented in Ilyas et al ([here](https://arxiv.org/abs/2202.00622)).
 
 ```{bash}
 conda env create -f environment.yml --name ffcv
