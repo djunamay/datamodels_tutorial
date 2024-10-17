@@ -55,7 +55,7 @@ python write_datasets.py --data.train_dataset ./CIFAR10/cifar10_train_subset_bin
 >    Make sure you have the wandb library installed (`pip install wandb`)
 >
 
-### 3. Train many models on different subsets of the dataset
+### 3. Train many models on different training subsets
 ```{bash}
 conda activate ffcv
 sbatch launch_headnode.sh
