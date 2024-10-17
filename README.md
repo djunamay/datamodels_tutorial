@@ -63,9 +63,21 @@ sbatch train_datamodels.sh
 
 - [google collab; code no outputs](https://colab.research.google.com/drive/1lwl7-Xsc7lg9bTg97hEEqPt54x-J1qeU?usp=sharing)
 
-## Requirements
+## System Requirements
+### Python libraries
 - **tqdm**: 4.66.5
 - **ffcv**: 1.0.2
 - **pyyaml**: 6.0.2
 - **fastargs**: 1.2.0
 - **ray**: 2.37.0
+### Hardware
+- **GPU**: NVIDIA Tesla V100-PCIE-32GB
+  - **Memory**: 32 GB
+  - **CUDA Capability**: Required for running GPU-accelerated tasks.
+### Software
+- **NVIDIA Driver Version**: 535.183.01
+- **CUDA Version**: 12.2
+### Notes
+- Update the sbatch files according to your resource availability
+- You can adjust the number of simultaneous ray trials by modifying `cpus_per_trial` and `gpus_per_trial` parameters in the `config` file
+- Profile your GPU and CPU usage by running `nvidia-smi -l` or `htop`, respectively on your compute node
