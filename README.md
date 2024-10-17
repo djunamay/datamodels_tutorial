@@ -15,8 +15,12 @@ This repository contains code to reproduce the exammple experiment in the tutori
 ```{bash}
 conda env create -f environment.yml --name ffcv
 conda activate ffcv
+
 pip install tqdm ffcv pyyaml fastargs ray torchvision fast_l1 notebook matplotlib
 pip install "ray[tune]"
+
+# install fastl1 from https://github.com/MadryLab/fast_l1
+
 # optionally install ipykernel to use the notebook interface
 conda install ipykernel
 python -m ipykernel install --user --name=ffcv
