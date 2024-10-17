@@ -10,7 +10,7 @@ Understanding how training data influences model predictions ("data attribution"
 - [google collab; code with outputs](https://colab.research.google.com/drive/1u2jZzWs7SVT6kj-O8rMsUphHfvyeqnHh?usp=sharing)
 
 ## This Repository
-This repository contains code to reproduce the exammple experiment in the tutorial; i.e. the code necessary to get to the 'datamodels.pt' output used in the google collab example.
+This repository contains code to reproduce the exammple experiment given in the tutorial (i.e. `datamodels.pt`).
 
 ```{bash}
 conda env create -f environment.yml --name ffcv
@@ -59,8 +59,7 @@ python write_datasets.py --data.train_dataset ./CIFAR10/cifar10_train_subset_bin
 ```{bash}
 conda activate ffcv
 sbatch launch_headnode.sh
-# once launched make note of the head address in nthis sbatch script and launch it
-sbatch train_cifar_with_ray.sh
+sbatch train_cifar_with_ray.sh # once the headnode is running, update the address in this file before submitting the training jobs (found in the .out file for the launch_headnode job) 
 ```
 
 ### 4. Fit datamodels
