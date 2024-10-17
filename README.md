@@ -59,6 +59,10 @@ conda activate ffcv
 sbatch train_datamodels.sh
 ```
 
+### 5. Explore the datamodels embeddings
+
+- [google collab; code no outputs](https://colab.research.google.com/drive/1lwl7-Xsc7lg9bTg97hEEqPt54x-J1qeU?usp=sharing)
+
 ## Requirements
 - **tqdm**: 4.66.5
 - **ffcv**: 1.0.2
