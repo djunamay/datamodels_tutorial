@@ -10,7 +10,7 @@ Understanding how training data influences model predictions ("data attribution"
 - [google collab; code with outputs](https://colab.research.google.com/drive/1u2jZzWs7SVT6kj-O8rMsUphHfvyeqnHh?usp=sharing)
 
 ## This Repository
-This repository contains code to reproduce the exammple experiment given in the tutorial (i.e. `datamodels.pt`).
+This repository contains code to reproduce the example experiment given in the tutorial (i.e. `datamodels.pt`).
 
 ```{bash}
 conda env create -f environment.yml --name ffcv
