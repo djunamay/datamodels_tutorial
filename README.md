@@ -13,6 +13,29 @@ Understanding how training data influences model predictions ("data attribution"
 ## This Repository
 This repository contains code to reproduce the exammple experiment in the tutorial; i.e. the code necessary to get to the 'datamodels.pt' output used in the google collab example.
 
-Experiment
+```{bash}
+conda env create -f environment.yml --name ffcv
+conda activate ffcv
+pip instal ... # version xx
 
-In this experiment, we trained circa 60,000 classifiers on random subsets of the CIFAR10 training set (alpha = 0.1) on the task to predict animate vs inanimate objects. This is a comparatively simple task compared to learning to predict all 10 classes (dogs, airplanes, e.t.c ...) and allows us to investigate model class behavior with some information on known sub-classes in the dataset for which models will likely have learnt different patterns (when trained on random subsets of the data) to solve this task.
+```
+1. Subset the CIFAR10 dataset
+```{bash}
+conda activate ffcv
+python write_datasets.py --data.train_dataset ../tutorial/toy_dataset/cifar10_toy_train.beton \
+                         --data.val_dataset ../tutorial/toy_dataset/cifar10_toy_val.beton \
+                         --data.binary_labels True \
+                         --data.subset_indices 1000 \
+                         --data.subset_val True
+```
+[Optional]
+2. Inspect the dataloader
+`inspect_dataloader.ipynb`
+
+3. Check that the training works as expected
+`train_a_good_model.ipynb`
+
+4. Tune your parameters for a given alpha
+`train_a_better_model.ipynb`
+
+## Requirements
