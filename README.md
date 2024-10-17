@@ -36,7 +36,7 @@ python write_datasets.py --data.train_dataset ./CIFAR10/cifar10_train_subset_bin
 
 > ### 2. Steps for Model Training and Tuning
 > 
-> Optional if using the same dataset and alpha (then you can use the parameters we've specified)
+> **Optional** ***if you plan on using the same dataset and alpha as in the example, move on to step 3***
 > 1. **Inspect the Dataloader (Optional)**  
 >    Before starting training, you can inspect the dataloader by running the following notebook:
 >    
