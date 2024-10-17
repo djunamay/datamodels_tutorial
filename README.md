@@ -16,26 +16,52 @@ This repository contains code to reproduce the exammple experiment in the tutori
 ```{bash}
 conda env create -f environment.yml --name ffcv
 conda activate ffcv
-pip instal ... # version xx
-
+pip install tqdm ffcv pyyaml fastargs ray
 ```
-1. Subset the CIFAR10 dataset
+### 1. Subset the CIFAR10 dataset
 ```{bash}
 conda activate ffcv
-python write_datasets.py --data.train_dataset ../tutorial/toy_dataset/cifar10_toy_train.beton \
-                         --data.val_dataset ../tutorial/toy_dataset/cifar10_toy_val.beton \
+python write_datasets.py --data.train_dataset ../CIFAR10/cifar10_train_subset_binaryLabels.beton \
+                         --data.val_dataset ../CIFAR10/cifar10_val_subset_binaryLabels.beton \
                          --data.binary_labels True \
-                         --data.subset_indices 1000 \
-                         --data.subset_val True
+                         --data.subset_indices 25000 # subset the training set to 25k samples
 ```
-[Optional]
-2. Inspect the dataloader
-`inspect_dataloader.ipynb`
 
-3. Check that the training works as expected
-`train_a_good_model.ipynb`
+> ### 2. Steps for Model Training and Tuning
+> 
+> Optional if using the same dataset and alpha (then you can use the parameters we've specified)
+> 1. **Inspect the Dataloader (Optional)**  
+>    Before starting training, you can inspect the dataloader by running the following notebook:
+>    
+>    `inspect_dataloader.ipynb`
+> 
+> 2. **Verify Training**  
+>    Ensure that the model training is functioning correctly by running the training notebook:
+>    
+>    `train_a_good_model.ipynb`
+> 
+> 3. **Parameter Tuning for Alpha**  
+>    To fine-tune your model parameters for a specific alpha value, use the notebook:
+>    
+>    `train_a_better_model.ipynb`
 
-4. Tune your parameters for a given alpha
-`train_a_better_model.ipynb`
+### 3. Train many models on different subsets of the dataset
+```{bash}
+conda activate ffcv
+sbatch launch_headnode.sh
+# once launched make note of the head address in nthis sbatch script and launch it
+sbatch train_cifar_with_ray.sh
+```
+
+### 4. Fit datamodels
+```{bash}
+conda activate ffcv
+sbatch train_datamodels.sh
+```
 
 ## Requirements
+- **tqdm**: 4.66.5
+- **ffcv**: 1.0.2
+- **pyyaml**: 6.0.2
+- **fastargs**: 1.2.0
+- **ray**: 2.37.0
