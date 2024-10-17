@@ -72,7 +72,7 @@ sbatch train_datamodels.sh
 
 - [google collab; code no outputs](https://colab.research.google.com/drive/1lwl7-Xsc7lg9bTg97hEEqPt54x-J1qeU?usp=sharing)
 
-## System Requirements
+## System Requirements used for this example
 ### Python libraries
 - **tqdm**: 4.66.5
 - **ffcv**: 1.0.2
