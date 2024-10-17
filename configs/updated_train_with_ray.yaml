@@ -1,0 +1,35 @@
+output:
+  directory: ./train_CIFAR10_out/alpha01_updated_params/ 
+  nmodels_per_trial: 5000
+  Ntrials: 100
+  lowest_trial: 77
+data:
+  alpha: 0.1
+  train_dataset: './CIFAR10/cifar10_train_subset_binaryLabels.beton'
+  test_dataset: './CIFAR10/cifar10_val_subset_binaryLabels.beton'
+  length: 25000
+  val_length: 10000
+resources:
+  cpus_per_trial: 10
+  gpus_per_trial: 0.5 #0.2
+  num_samples: 1
+  max_concurrent_trials: 0 # =0
+training:
+  batch_size: 32
+  test_batch_size: 2000
+  lr: 0.45 
+  momentum: 0.9
+  weight_decay: 5e-4
+  epochs: 205
+  label_smoothing: 0.0
+  num_workers: 1
+  num_classes: 2
+  optimizer: 'SGD'
+  lr_scheduler: 'step'
+  step_size: 60
+  gamma: 0.25
+  lr_tta: False
+  get_val_samples: False
+  no_transform: False
+  return_sequential: False
+

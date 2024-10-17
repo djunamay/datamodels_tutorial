@@ -8,7 +8,6 @@ Understanding how training data influences model predictions ("data attribution"
 - [slides](https://drive.google.com/file/d/1qGahNYBUnThba07D2D9gZTviiU_kOedF/view?usp=sharing)
 - [google collab; code no outputs](https://colab.research.google.com/drive/1lwl7-Xsc7lg9bTg97hEEqPt54x-J1qeU?usp=sharing)
 - [google collab; code with outputs](https://colab.research.google.com/drive/1u2jZzWs7SVT6kj-O8rMsUphHfvyeqnHh?usp=sharing)
-- [notes]()
 
 ## This Repository
 This repository contains code to reproduce the exammple experiment in the tutorial; i.e. the code necessary to get to the 'datamodels.pt' output used in the google collab example.
@@ -16,13 +15,17 @@ This repository contains code to reproduce the exammple experiment in the tutori
 ```{bash}
 conda env create -f environment.yml --name ffcv
 conda activate ffcv
-pip install tqdm ffcv pyyaml fastargs ray
+pip install tqdm ffcv pyyaml fastargs ray torchvision fast_l1 notebook matplotlib
+pip install "ray[tune]"
+# optionally install ipykernel to use the notebook interface
+conda install ipykernel
+python -m ipykernel install --user --name=ffcv
 ```
 ### 1. Subset the CIFAR10 dataset
 ```{bash}
 conda activate ffcv
-python write_datasets.py --data.train_dataset ../CIFAR10/cifar10_train_subset_binaryLabels.beton \
-                         --data.val_dataset ../CIFAR10/cifar10_val_subset_binaryLabels.beton \
+python write_datasets.py --data.train_dataset ./CIFAR10/cifar10_train_subset_binaryLabels.beton \
+                         --data.val_dataset ./CIFAR10/cifar10_val_subset_binaryLabels.beton \
                          --data.binary_labels True \
                          --data.subset_indices 25000 # subset the training set to 25k samples
 ```
@@ -44,6 +47,9 @@ python write_datasets.py --data.train_dataset ../CIFAR10/cifar10_train_subset_bi
 >    To fine-tune your model parameters for a specific alpha value, use the notebook:
 >    
 >    `train_a_better_model.ipynb`
+>
+>    Make sure you have the wandb library installed (`pip install wandb`)
+>
 
 ### 3. Train many models on different subsets of the dataset
 ```{bash}
@@ -70,6 +76,7 @@ sbatch train_datamodels.sh
 - **pyyaml**: 6.0.2
 - **fastargs**: 1.2.0
 - **ray**: 2.37.0
+- **torchvision**: 0.19.0+cu118
 ### Hardware
 - **GPU**: NVIDIA Tesla V100-PCIE-32GB
   - **Memory**: 32 GB
